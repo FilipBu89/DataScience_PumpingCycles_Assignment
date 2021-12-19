@@ -1,0 +1,31 @@
+==========Global Notes==========
+- I have created main.ipynb file for running a program populating requested outputs
+- main.py file is importing pumping_cycle_utils.py file, where all functions get getting the results are stored
+- all functions and steps should be well commented in .py file in order to understand the applied logics
+
+
+==========Task Solution Description==========
+A) Cycle Treshold
+- program is printing out mean treshold value
+- program is showing chart with timestamp on X-axis and pressures on Y-values accross all detected pumping cycles
+
+
+B) Cycle Trend Health Hypothesis
+Approach:
+- I have decided to apply a hypothesis testing for each of the detected pumpingy cycles
+	- Hypothesis was defined as:
+		- Null Hypothesis H0: no trend exists
+		- Alternate Hypothesis Ha: decreasing trend exists
+	- For detecting a trend I have used correlation calculating (using Kendall’s Tau)
+	- For statistical tests I have used p-value
+
+Results: 
+Kendall’s Tau values for all pumping cycles are indicating quite strong negative correlations (around -0.8).
+These values are also confirmed by p-values (for 95% confidence interval) results, which are all < 0.05.
+Therefore we can reject the null hypothesis and accept the initial assumption, that pump is "healthy" as the pressure is gradully decresing during all of the pumping cycle periods.
+
+
+
+
+
+
