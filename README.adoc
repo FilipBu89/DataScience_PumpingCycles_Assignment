@@ -1,0 +1,51 @@
+= Pumping Events Detection
+
+Detect pumping cycles.
+Calculate and visualize the health of the pump using the data from the cycles.
+
+== Input
+
+The link:Pressure.csv[Pressure.csv] file contains the following columns:
+
+- _Date_ - timestamp of the row
+- _Pressure_ [Pa] - actual pressure in a vacuum chamber
+- _PumpState_ [Enumeration] - actual state of a pump
+
+Each row of the file represents one logging.
+The _PumpState_ values are logged only when the pump changes its state.
+Until then, the previous logged state is valid.
+The _Pressure_ is logged irregularly and only when a pressure measurement is performed.
+
+== Algorithm Assigment
+
+The *pumping cycle* is defined as followed:
+
+- starts 10 seconds after the _PumpState_ changes its value to pumping (1)
+- ends 5 second before the _PumpState_ changes its value to pumped (2)
+- there are no changes of _PumpState_ during the cycle (but some additional pumping = 1 values may be logged during the cycle)
+
+=== A) Cycle Threshold
+
+Calculate the *cycle threshold* (minimal _Pressure_ value) for each cycle.
+Finally, calculate the mean of the cycle threshold values.
+
+=== B) Cycle Trend Health Hypothesis
+
+Consider the following pump health hypothesis.
+If the pump is healthy, the _Pressure_ should gradually decrease during the pumping cycle.
+Check whether the data match the hypothesis.
+Use any approach and visualization means to perform the check.
+(The hypothesis testing is a possible solution but is not required.
+Simple "common sense" approach is perfectly OK.)
+
+=== Requirements and Tips
+
+Use pandas (http://pandas.pydata.org/pandas-docs/stable/) package to solve the assignment.
+
+We suggest to use http://jupyter.org/ as a development tool. So the solution can be in form of Jupyter notebook. However regular .py file will work as well. 
+
+== Output
+
+. Visualize all the cycle threshold values using time as x-axis
+. Visualize the cycle trend health analysis results
+. Commit all your code and results back to the repository
